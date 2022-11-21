@@ -15,6 +15,15 @@ A snippet representing this output is also attached and the files are "exportfil
 
 A plot between Training and Validation interms of Accuracy and Loss are plotted and an image is attached to take a look at it. The file is "accuracy_vs_loss.PNG"
 
+# TensorFlow Serving
+Reference used: https://www.tensorflow.org/tfx/tutorials/serving/rest_simple
+
+Here, the model that we have saved above, we create requests now using tensorflow-model-server which is essentially utilized for deploying the trained models.
+I am attaching a Google Colab notebook which has all the steps followed and also the expected output snippets are attached.
+The model is saved in the outputs folder. I have uploaded this folder to my google drive.
+My fetching the folder from the drive, I have run the necessary commands on the google colab notebook.
+The end goal is it displays what is the expected and the obtained output.
+
 # MultiModalClassifier
 This is a project repo for multi-modal deep learning classifier with popular models from Tensorflow and Pytorch. The goal of these baseline models is to provide a template to build on and can be a starting point for any new ideas, applications. If you want to learn basics of ML and DL, please refer this repo: https://github.com/lkk688/DeepDataMiningLearning.
 
