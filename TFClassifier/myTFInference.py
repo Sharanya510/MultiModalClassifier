@@ -11,15 +11,15 @@ print(tf.__version__)
 model = None 
 
 parser = configargparse.ArgParser(description='myTFClassifyInference')
-parser.add_argument('--data_name', type=str, default='flower',
+parser.add_argument('--data_name', type=str, default='fashionMNIST',
                     help='data name: mnist, fashionMNIST, flower')
-parser.add_argument('--data_type', default='imagefolder', choices=['tfds', 'kerasdataset', 'imagefolder', 'TFrecord'],
+parser.add_argument('--data_type', default='kerasdataset', choices=['tfds', 'kerasdataset', 'imagefolder', 'TFrecord'],
                     help='the type of data')  # gs://cmpelkk_imagetest/*.tfrec
 parser.add_argument('--data_path', type=str, default='/home/lkk/.keras/datasets/flower_photos',
                     help='path to get data')
-parser.add_argument('--img_height', type=int, default=180,
+parser.add_argument('--img_height', type=int, default=28,
                     help='resize to img height')
-parser.add_argument('--img_width', type=int, default=180,
+parser.add_argument('--img_width', type=int, default=28,
                     help='resize to img width')
 # network
 parser.add_argument('--model_name', default='cnnsimple4', choices=['cnnsimple1', 'cnnsimple2', 'cnnsimple3', 'cnnsimple4','mobilenetmodel1'],
@@ -68,7 +68,7 @@ def PILgetonlineimagearray(url, img_height, img_width):
     from numpy import asarray
 
     from urllib.request import urlopen
-    from PIL import Image
+    from PIL import Image, ImageOps
 
     image = Image.open(urlopen(url))
 
@@ -76,6 +76,7 @@ def PILgetonlineimagearray(url, img_height, img_width):
     # (This is not mandatory)
     width, height = image.size
     image=image.resize((img_width, img_height)) #(width, height) https://pillow.readthedocs.io/en/stable/reference/Image.html
+    image=ImageOps.grayscale(image)
 
     # imgpath=requests.get(url, stream=True).raw
     # image = Image.open(imgpath)
@@ -108,15 +109,16 @@ def inference(infermodel, img_np, class_names):
 
 def main():
 
-    model=loadsavedmodel(args.model_path)
+    model=loadsavedmodel('C:/fall2022/255/bonus_final/MultiModalClassifier/TFClassifier/outputs/fashion')
 
-    url='https://www.jacksonandperkins.com/images/xxl/v1780.jpg'#rose
+    url='https://cdn.shopify.com/s/files/1/1748/4357/products/merry-new-year-unisex-t-shirt.jpg?v=1667874550'#rose
     img_array = PILgetonlineimagearray(url, args.img_height, args.img_width)
 
     pltgetonlineimagearray(url)
     #img_array = tfgetimagearray(args.data_path, args.img_height, args.img_width)
 
-    class_names=['daisy', 'dandelion', 'roses', 'sunflowers', 'tulips']
+    class_names=['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
+               'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
     inference(model, img_array, class_names)
 
 if __name__ == '__main__':

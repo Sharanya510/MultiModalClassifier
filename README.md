@@ -1,3 +1,20 @@
+# Bonus Work 1
+This submission consists of changes made to the repository with respect to performing a deploy with Tensorflow Serving
+
+Once you clone the repo, run the training code which is the file "myTFDistributedTrainer.py"
+I have attached the snippets of the input/command used to run this file and the expected output. The snippets are "myDistributedTrainer_input.PNG" and "myDistributedTrainer_output.PNG"
+
+Once you have trained the model, do the inference and this can be done by using "myTFInference.py"
+The snippets associated with this is "myTFInference_execution.PNG" showing the complete output.
+
+So, here, the dataset I am working on is fashionMNIST. For the inference, I have passed an image which is a tshirt and the URL I have passed is https://cdn.shopify.com/s/files/1/1748/4357/products/merry-new-year-unisex-t-shirt.jpg?v=1667874550 . It depicts the provided image as a shirt with a 91.72 accuracy.
+
+Now, the next step is exporting this entire flow into a lite model.
+Here, the output shows that the image provided is a t-shirt.
+A snippet representing this output is also attached and the files are "exportfile_input.PNG" and "exportfile_output.PNG"
+
+A plot between Training and Validation interms of Accuracy and Loss are plotted and an image is attached to take a look at it. The file is "accuracy_vs_loss.PNG"
+
 # MultiModalClassifier
 This is a project repo for multi-modal deep learning classifier with popular models from Tensorflow and Pytorch. The goal of these baseline models is to provide a template to build on and can be a starting point for any new ideas, applications. If you want to learn basics of ML and DL, please refer this repo: https://github.com/lkk688/DeepDataMiningLearning.
 
@@ -52,3 +69,6 @@ Check these links for TensorRT inference for Pytorch models:
 * https://github.com/NVIDIA-AI-IOT/torch2trt
 * https://learnopencv.com/how-to-convert-a-model-from-pytorch-to-tensorrt-and-speed-up-inference/
 * https://developer.nvidia.com/blog/speeding-up-deep-learning-inference-using-tensorrt/
+
+
+[def]: C:\fall2022\255\bonus_final\myDistributedTrainer_input.PNG
